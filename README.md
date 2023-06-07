@@ -97,3 +97,13 @@ Con estos pasos, deberías poder empaquetar tu microservicio en un contenedor Do
 ## Documentacion del api
 
 Este proyecto cuenta con una documentacion echa con Swagger UI gracias a que nest.js nos da la comodidad de contruir una excelente aplicacion MVC de manera muy rapida efectiva y operativa puedes visatarla en la ruta de /docs si lo estas carriendo localmente seguramente la ruta sera: http://localhost:3001/docs 
+
+## Notas Adicional
+
+quizás sea conveniente especificar que si quieren conectar la imagen de microservidor con la imagen de la base de datos es necesario no solo inyectarle las variables de entorno a la imagen si no que recordar que la imagen corre sobre su propio entorno asi que en la variable  host tiene que apuntar a la ip del pc
+HOST=IP del Computador que corre la imagen de la db
+deje el .env apuntando al localhost como si se corriera en ambiente de desarrollo pero por si algo dejo esta información para que sepan como ver corriendo el servidor con la coneccion a la db el comando por si no lo recuerdan es:
+```cmd
+ docker run --env-file=./.env -p 3001:3001 mymicroservice
+ ```
+ de esta manera ya queda todo en orden a la hora de correr el servicio en una imagen
