@@ -13,14 +13,20 @@ export class CocktailsController {
   @UseGuards(AuthGuard)
   @Post()
   create(@Body() createCocktailDto: CreateCocktailDto) {
-    return this.cocktailsService.create(createCocktailDto);
+    this.cocktailsService.create(createCocktailDto);
+    return {response : "Cocktail successfully create"}
   }
   @UseGuards(AuthGuard)
   @Get()
-  findAll(@Query('order') order: string) {
-   if ( order ){
+  findAll(@Query('order') order: string,@Query('search') search: string) {
+    if (order && search) {
+      if (order === 'asc' || order === 'desc') return this.cocktailsService.findAllByOrderAndSearch(order,search);
+      else throw new HttpException('INCORRECT_PARAMETER', 403)   
+   } else if ( order ){
      if (order === 'asc' || order === 'desc') return this.cocktailsService.findAllByOrder(order);
      else throw new HttpException('INCORRECT_PARAMETER', 403)
+   } else if (search ){
+    return this.cocktailsService.findAllBySearch(search);
    } else return this.cocktailsService.findAll();
   }
 

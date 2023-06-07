@@ -93,3 +93,7 @@ docker run -p 3000:3000 mymicroservice
 Esto ejecutará un contenedor a partir de la imagen mymicroservice y mapeará el puerto 3000 del contenedor al puerto 3000 de tu máquina local. Puedes cambiar el número de puerto si tu microservicio utiliza un puerto diferente.
 
 Con estos pasos, deberías poder empaquetar tu microservicio en un contenedor Docker y ejecutarlo en cualquier entorno compatible con Docker.
+
+## Documentacion del api
+
+Este proyecto cuenta con una documentacion echa con Swagger UI gracias a que nest.js nos da la comodidad de contruir una excelente aplicacion MVC de manera muy rapida efectiva y operativa puedes visatarla en la ruta de /docs si lo estas carriendo localmente seguramente la ruta sera: http://localhost:3001/docs 

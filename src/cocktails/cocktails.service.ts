@@ -24,6 +24,14 @@ export class CocktailsService {
     return await this.db.query(`SELECT * FROM cocktail ORDER BY name ${order.toUpperCase()};`)
   }
 
+  async findAllBySearch(search){
+    return await this.db.query(`SELECT * FROM cocktail WHERE instructions LIKE '%${search}%';`)
+  }
+
+  async findAllByOrderAndSearch(order, search) {
+    return await this.db.query(`SELECT * FROM cocktail WHERE instructions LIKE '%${search}%' ORDER BY name ${order.toUpperCase()};`)
+  }
+
   async findOne(id: number) {
     return await this.db.query(`SELECT * FROM cocktail WHERE id = ${id}`);
   }
